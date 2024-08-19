@@ -19,8 +19,9 @@ pipeline {
         stage('Push') {
             steps {
                 script {
-                    docker.withRegistry('https://hub.docker.com', 'dockerhub') 
-                    docker.image("devops_test:latest").push('latest')
+                    docker.withRegistry('https://hub.docker.com', 'dockerhub') {
+                        docker.image("devops_test:latest").push('latest')
+                    }
                 }
             }
         }
