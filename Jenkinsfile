@@ -16,10 +16,12 @@ pipeline {
                 // Add your build commands here
             }
         }
-        stage('Test') {
+        stage('Push') {
             steps {
-                echo 'Testing...'
-                // Add your test commands here
+                script {
+                    docker.withRegistry('https://hub.docker.com', 'dockerhub') 
+                    docker.image("devops_test:latest").push('latest')
+                }
             }
         }
         stage('Deploy') {
