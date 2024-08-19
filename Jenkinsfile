@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    docker.build("devops_test:latest",'-f Dockerfile .')
+                    docker.build("eslamsaeed/devops_test:latest",'-f Dockerfile .')
                 }
 
                 // Add your build commands here
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-                        docker.image("devops_test:latest").push('latest')
+                        docker.image("eslamsaeed/devops_test:latest").push('latest')
                     }
                 }
             }
